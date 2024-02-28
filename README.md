@@ -63,7 +63,43 @@ of the Z position.
 
 ## Prototype
 
+A quick prototype was built using unsupported 10mm round rail and blocks.
+Note a belt drive was used here for simplicity.
+
 ![First prototype](first-prototype.png)
+
+The outside dimensions are approximately 19" x 24" with a hexagonal range of
+motion about 9" per side.
+
+With the corners clamped to the table, the deflection was measured at various
+points and directions using the stepper's maximum unpowered holding torque as
+a repeatable force gauge.
+The deflection at the point where the belt attaches to a cross rail was
+about 0.002".
+Deflections at the platform were in the 0.005" to 0.010" range.
+
+
+Lessons learned:
+
+* The design is viable
+
+  * Motion is very smooth
+  * No racking or backlash is detectable
+  * Probably good enough for moderate speed 3D printing
+
+* This particular construction is weak
+
+  * The frame is easily bent out of square
+  * The longer drive rails deflect easily
+  * The drive rails would be better if supported and blocks facing inwards
+  * All cross rails should be attached above the platform
+
+    * Bringing centerlines closer to the drive rails reduces deflections by rotation
+    * Improves clearance above the work piece
+    * Keeps bearings away from the cutter
+
+  * The platform mass could be reduced by machining it to capture the bearings
+  * Lighter but paired cross rails should be considered
 
 
 ## Inverse Kinematics

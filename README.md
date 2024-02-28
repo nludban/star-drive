@@ -31,7 +31,7 @@ Crossed rails are used to minimize driven mass, but the cross angle is nominally
 This allows both cross rails to ride on the same drive rails with the motors
 and ballscrews located on the same or opposite sides.
 
-//]: # (overview diagram here)
+-- (overview diagram here)
 
 Driving both cross rails the same distance along the drive rails causes the
 platform to move an equal distance parallel to the drive rails.
@@ -43,7 +43,7 @@ each be moved about 4/7 the desired distance, but in opposite directions.
 The name, "* drive", was loosely based on the appearance of the crossed rails
 and the simple directions of motion.
 
-//]: # (motion diagrams here)
+-- (motion diagrams here)
 
 Compared to the standard 90 cross angle, one set of rails and a motor are
 eliminated, as is the tendency for racking.
@@ -58,7 +58,7 @@ The system may be adapted to a Y-Z motion by extending the one set of drive
 rails (Y range) and optionally adjusting the cross angle for finer control
 of the Z position.
 
-//]: # (Y-Z diagram here)
+-- (Y-Z diagram here)
 
 
 ## Prototype

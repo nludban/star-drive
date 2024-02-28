@@ -237,7 +237,133 @@ func InverseKinematics() {
 }
 
 
+func Calibration() {
+	fout, _ := os.Create("calibration.svg")
+
+	var c *svg.SVG = svg.New(fout)
+	width := 600
+	height := 400
+	c.Start(width, height)
+	c.Roundrect(0, 0, width, height, 15, 15,
+		"fill:snow;stroke:black;stroke-width:3")
+
+	var x1, y1, x2, y2 int
+
+	e0 := Eye()
+	fmt.Println("e0=", e0)
+
+	org := e0.Translated(300, -200)
+	fmt.Println("org=", org)
+
+	c.Gstyle("fill:none;stroke:gray;stroke-width:1")
+	{
+		// X axis
+		x1, y1 = org.Point(-280, 0)
+		x2, y2 = org.Point(280, 0)
+		c.Line(x1, y1, x2, y2)
+		ArrowHead(c, org.Translated(280, 0), 0)
+		x1, y1 = org.Point(270, 15)
+		c.Text(x1, y1, "X", TextStyle("middle"))
+
+		// Y axis
+		x1, y1 = org.Point(0, -180)
+		x2, y2 = org.Point(0, 180)
+		c.Line(x1, y1, x2, y2)
+		ArrowHead(c, org.Translated(0, 180), 90)
+		x1, y1 = org.Point(15, 180)
+		c.Text(x1, y1, "Y", TextStyle("middle"))
+	}
+	c.Gend()
+
+	c.Gstyle("fill:none;stroke:black;stroke-width:3")
+	{
+		// P(latform)
+		x1, y1 = org.Point(24, 80)
+		c.Circle(x1, y1, 5, "fill:black")
+		x1, y1 = org.Point(45, 80)
+		c.Text(x1, y1, "P", TextStyle("middle"))
+	}
+	c.Gend()
+
+	c.Gstyle("fill:none;stroke:black;stroke-width:3")
+	{
+		// Cross-Rail 1.
+		u := org.Translated(-30, 0).Rotated(55)
+		x1, y1 = u.Point(-180, 0)
+		x2, y2 = u.Point(180, 0)
+		c.Line(x1, y1, x2, y2)
+
+		x1, y1 = org.Point(-85, -110)
+		c.Text(x1, y1, "R1", TextStyle("middle"))
+
+		// Cross-Rail 2.
+		v := org.Translated(80, 0).Rotated(125)
+		x1, y1 = v.Point(-180, 0)
+		x2, y2 = v.Point(180, 0)
+		c.Line(x1, y1, x2, y2)
+
+		x1, y1 = org.Point(135, -110)
+		c.Text(x1, y1, "R2", TextStyle("middle"))
+	}
+	c.Gend()
+
+	c.Gstyle("fill:none;stroke:black;stroke-width:3")
+	{
+		// Drive Rail 1
+		u := org.Translated(0, -150)
+		x1, y1 = u.Point(-280, 0)
+		x2, y2 = u.Point( 280, 0)
+		c.Line(x1, y1, x2, y2)
+
+		x1, y1 = u.Point(-250, 15)
+		c.Text(x1, y1, "D1", TextStyle("middle"))
+
+		// Block 1a
+		x1, y1 = u.Point(-170, 0)
+		x2, y2 = u.Point(-130, 0)
+		c.Line(x1, y1, x2, y2, "stroke-width:10")
+		x1, y1 = u.Point(-150, -20)
+		c.Text(x1, y1, "B1.a", TextStyle("middle"))
+
+		// Block 2b
+		x1, y1 = u.Point(180, 0)
+		x2, y2 = u.Point(220, 0)
+		c.Line(x1, y1, x2, y2, "stroke-width:10")
+		x1, y1 = u.Point(200, -20)
+		c.Text(x1, y1, "B2.b", TextStyle("middle"))
+
+		// Drive Rail 2
+		u = org.Translated(0, 150)
+		x1, y1 = u.Point(-280, 0)
+		x2, y2 = u.Point( 280, 0)
+		c.Line(x1, y1, x2, y2)
+
+		x1, y1 = u.Point(-250, -15)
+		c.Text(x1, y1, "D2", TextStyle("middle"))
+
+		// Block 2a
+		x1, y1 = u.Point(-60, 0)
+		x2, y2 = u.Point(-20, 0)
+		c.Line(x1, y1, x2, y2, "stroke-width:10")
+		x1, y1 = u.Point(-40, 20)
+		c.Text(x1, y1, "B2.a", TextStyle("middle"))
+
+		// Block 1b
+		x1, y1 = u.Point(70, 0)
+		x2, y2 = u.Point(110, 0)
+		c.Line(x1, y1, x2, y2, "stroke-width:10")
+		x1, y1 = u.Point(90, 20)
+		c.Text(x1, y1, "B1.b", TextStyle("middle"))
+	}
+	c.Gend()
+
+	c.End()
+	fout.Close()
+	return
+}
+
+
 func main() {
 	InverseKinematics()
-
+	Calibration()
 }

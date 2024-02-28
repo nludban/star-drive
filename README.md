@@ -124,3 +124,35 @@ either before or after kinematics transformations.
 
 
 ## Calibration
+
+Note that no absolute measurements are necessary, only differences in relative
+positions and after motion.
+Any convenient reference points may be used as long as the distance measured
+is parallel to the direction of motion.
+
+Note the parallel drive rails creates angles (and triangles) at the ends of
+each cross rail and across the platform.
+Everything should be adjusted to about 60 degrees with free motion, and then
+calibration is used to correct the commanded motions.
+
+1- The two drive rails (D1 and D2) must be parallel. Adjust so both ends are
+the same distance apart.
+
+2- Adjust all blocks as needed to eliminate any binding.
+
+3- Measure the distance traveled by blocks B1 for a known number of steps.
+Repeat for blocks B2. These ratios calibrate each stepper motion to linear
+motion along the X axis.
+
+4- Position B1.a and B2.b far apart. Measure any reference along the three
+sides of the triangle B1.a - B2.b - P. Optionally measure the opposite triangle
+B2.a - B1.b - P.
+
+5- Position B1.a and B2.b close together. Repeat the measurements of step (4).
+
+6- Calculate the differences in the lengths of the sides between steps (4) and
+(5). Use the differences to form the sides a similar triangle (same angles).
+
+7- The new triangle is used to calculate ratios b1 / h and b2 / h needed for
+inverse kinematics. Use Heron's formula to calculate the area, area and base
+to calculate h, Pythagorean theorem with h and side to calculate b.

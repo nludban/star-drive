@@ -104,5 +104,23 @@ Lessons learned:
 
 ## Inverse Kinematics
 
+The idealized geometry (ignoring all offsets) is shown in the diagram below.
+Note the machine coordinate frame is in the center of the workspace.
+
+![Inverse Kinematics Diagram](inverse-kinematics.svg)
+
+Two cross rails, R1 and R2, are controlled to positions x1 and x2 along
+the X axis.
+The platform will then be found at the intersection of the rails at point P.
+
+The controller has been calibrated with two values, the ratios
+b1 / h and b2 / h.
+To find the positions x1 and x2 corresponding to P at (Px, Py),
+note that Py = h and the lengths b1 and b2 can be found by multiplying h
+by the calibration values, and then x1 = Px - b1 and x2 = Px + b2.
+
+Note all offsets can be pre-computed to two additions (x and y) to be applied
+either before or after kinematics transformations.
+
 
 ## Calibration

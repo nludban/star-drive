@@ -107,7 +107,7 @@ Lessons learned:
 The idealized geometry (ignoring all offsets) is shown in the diagram below.
 Note the machine coordinate frame is in the center of the workspace.
 
-<img src="inverse-kinematics.svg">
+![Inverse Kinematics Diagram](inverse-kinematics.svg)
 
 Two cross rails, R1 and R2, are controlled to positions x1 and x2 along
 the X axis.

@@ -91,7 +91,7 @@ Lessons learned:
 
   * The frame is easily bent out of square
   * The longer drive rails deflect easily
-  * The drive rails would be better if supported and blocks facing inwards
+  * The drive rails would be better if supported and rotate blocks to face inwards
   * All cross rails should be attached above the platform
 
     * Bringing centerlines closer to the drive rails reduces deflections by rotation
@@ -119,7 +119,7 @@ To find the positions x1 and x2 corresponding to P at (Px, Py),
 note that Py = h and the lengths b1 and b2 can be found by multiplying h
 by the calibration values, and then x1 = Px - b1 and x2 = Px + b2.
 
-Note all offsets can be pre-computed to two additions (x and y) to be applied
+Note all offsets can be pre-computed for two additions (x and y) to be applied
 either before or after kinematics transformations.
 
 
@@ -130,10 +130,11 @@ positions and after motion.
 Any convenient reference points may be used as long as the distance measured
 is parallel to the direction of motion.
 
-Note the parallel drive rails creates angles (and triangles) at the ends of
-each cross rail and across the platform.
+Note the parallel drive rails creates equal angles at the ends of each cross
+rail and across the platform.
+The triangles on opposite sides of the platform are therefore similar.
 Everything should be adjusted to about 60 degrees with free motion, and then
-calibration is used to correct the commanded motions.
+calibration is used to correct the remaining error.
 
 ![Calibration Diagram](calibration.svg)
 
@@ -143,7 +144,7 @@ the same distance apart.
 2- Adjust all blocks as needed to eliminate any binding.
 
 3- Measure the distance traveled by blocks B1 for a known number of steps.
-Repeat for blocks B2. These ratios calibrate each stepper motion to linear
+Repeat for blocks B2. These ratios calibrate each stepper's rotation to linear
 motion along the X axis.
 
 4- Position B1.a and B2.b far apart. Measure any reference along the three
@@ -157,4 +158,4 @@ B2.a - B1.b - P.
 
 7- The new triangle is used to calculate ratios b1 / h and b2 / h needed for
 inverse kinematics. Use Heron's formula to calculate the area, area and base
-to calculate h, Pythagorean theorem with h and side to calculate b.
+to calculate h, Pythagorean theorem with h and each side to calculate b1 and b2.

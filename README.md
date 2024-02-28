@@ -135,6 +135,8 @@ each cross rail and across the platform.
 Everything should be adjusted to about 60 degrees with free motion, and then
 calibration is used to correct the commanded motions.
 
+![Calibration Diagram](calibration.svg)
+
 1- The two drive rails (D1 and D2) must be parallel. Adjust so both ends are
 the same distance apart.
 

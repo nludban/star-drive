@@ -231,7 +231,7 @@ func InverseKinematics() {
 	}
 	c.Gend()
 
-	c.Gend()
+	c.End()
 	fout.Close()
 	return
 }
